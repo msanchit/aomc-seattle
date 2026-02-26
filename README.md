@@ -1,36 +1,106 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# AOMC Seattle — Modern Website
 
-## Getting Started
+A modern rebuild of [aomcseattle.com](http://www.aomcseattle.com) for the Acupuncture & Oriental Medicine Center in Seattle.
 
-First, run the development server:
+Built with [Next.js](https://nextjs.org) and [Tailwind CSS](https://tailwindcss.com). Designed for readability and accessibility, with an emphasis on the clinic's older patient demographic.
+
+---
+
+## For Dr. Duan & Staff: How to Get This Live
+
+There are two steps: **deploy the site** (free hosting), and **point your domain** to it.
+
+### Step 1: Deploy to Vercel (Free)
+
+1. Go to [vercel.com](https://vercel.com) and click **Sign Up** → **Continue with GitHub**
+2. Once logged in, click **Add New Project**
+3. Find this repository in the list and click **Import**
+4. Leave all settings as default and click **Deploy**
+5. In ~60 seconds you'll get a live URL like `aomc-seattle.vercel.app`
+
+That's it — the site is now live on the internet at that URL.
+
+### Step 2: Point Your Domain (aomcseattle.com)
+
+To make `www.aomcseattle.com` show this new site:
+
+1. In Vercel, go to your project → **Settings** → **Domains**
+2. Type `www.aomcseattle.com` and click **Add**
+3. Vercel will show you DNS records to set up. You need to go to wherever your domain is registered (GoDaddy, Namecheap, Google Domains, etc.) and update the DNS:
+
+   | Type  | Name  | Value                    |
+   |-------|-------|--------------------------|
+   | CNAME | www   | cname.vercel-dns.com     |
+   | A     | @     | 76.76.21.21              |
+
+4. Save the DNS changes. It may take up to 24–48 hours to propagate, but usually works within minutes.
+5. Vercel will automatically set up HTTPS (SSL) for you — no extra steps.
+
+> **Tip:** If you're unsure who your domain registrar is, try searching "whois aomcseattle.com" on Google. The registrar name will appear in the results.
+
+### Step 3: Future Updates
+
+To update the website content:
+
+1. Edit the files in `src/app/` — each folder is a page (e.g., `src/app/contact/page.tsx` is the Contact page)
+2. Push changes to GitHub
+3. Vercel automatically rebuilds and deploys within ~30 seconds
+
+---
+
+## For Developers: Local Setup
 
 ```bash
+# Install dependencies
+npm install
+
+# Start development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+
+# Build for production
+npm run build
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+The site runs at `http://localhost:3000`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+src/
+  app/
+    page.tsx          # Homepage
+    tcm/page.tsx      # Traditional Chinese Medicine
+    conditions/page.tsx
+    staff/page.tsx    # Physician profiles
+    clinics/page.tsx  # Specialty clinics
+    education/page.tsx
+    testimonials/page.tsx
+    faqs/page.tsx
+    gallery/page.tsx  # Facility & pharmacy photos
+    contact/page.tsx
+    layout.tsx        # Shared layout (header, footer)
+    globals.css       # Global styles & color variables
+  components/
+    Header.tsx        # Navigation bar
+    Footer.tsx
+    MobileCallBar.tsx # Sticky phone button on mobile
+public/
+  images/             # All site images
+    generated/        # AI-generated images (hero, logo, etc.)
+    images/           # Original scraped images (doctor photos, etc.)
+  gallery/            # Facility and pharmacy photos
+    facility/
+    pharmacy/
+```
 
-## Learn More
+### Key Information
 
-To learn more about Next.js, take a look at the following resources:
+- **Phone:** (206) 782-2126
+- **Email:** aomcseattle@gmail.com
+- **Ballard:** 9015 Holman Rd. NW, Suite 1, Seattle, WA 98117
+- **Belltown:** 2701 Western Ave., Seattle, WA 98121
+- **Hours:** Mon–Fri 9am–6:30pm, Sat 9am–1pm
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Built with care by Sanchit.
